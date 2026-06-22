@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Youssef Naciri Zerta — Computational biology &amp; representation learning</title>
+<meta name="description" content="Youssef Naciri Zerta — building interpretable, identifiable representations across the modalities of life. Computational biology, foundation models, mechanistic interpretability." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#E9EDEE;
+    --surface:#FDFEFE;
+    --ink:#0F1E1D;
+    --muted:#566463;
+    --line:#CFD7D6;
+    --signal:#1F6F78;
+    --signal-deep:#134A50;
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --body:"Newsreader",Georgia,serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --maxw:1040px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  a{color:inherit}
+  ::selection{background:var(--signal);color:#fff}
+  :focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--signal-deep);
+  }
+
+  /* ---- hero ---- */
+  .hero{position:relative;overflow:hidden}
+  #field{
+    position:absolute;inset:0;width:100%;height:100%;
+    z-index:0;opacity:.9;
+    -webkit-mask-image:radial-gradient(120% 90% at 78% 30%,#000 0%,#000 45%,transparent 78%);
+            mask-image:radial-gradient(120% 90% at 78% 30%,#000 0%,#000 45%,transparent 78%);
+  }
+  .hero .wrap{position:relative;z-index:1;padding-top:88px;padding-bottom:72px}
+  .name{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(40px,7vw,76px);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    margin:18px 0 0;
+  }
+  .vision{
+    font-family:var(--body);
+    font-size:clamp(20px,2.4vw,27px);
+    line-height:1.42;
+    max-width:30ch;
+    margin:26px 0 0;
+  }
+  .vision em{font-style:italic;color:var(--signal-deep)}
+  .links{
+    display:flex;flex-wrap:wrap;gap:10px 26px;
+    margin-top:34px;
+    font-family:var(--mono);font-size:14px;letter-spacing:.01em;
+  }
+  .links a{
+    text-decoration:none;
+    padding-bottom:3px;
+    border-bottom:1px solid var(--line);
+    transition:color .18s ease,border-color .18s ease;
+  }
+  .links a:hover{color:var(--signal);border-color:var(--signal)}
+  .links a span{color:var(--muted)}
+
+  /* ---- generic section ---- */
+  .section{padding:64px 0;border-top:1px solid var(--line)}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+  .section-head h2{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(22px,3vw,30px);letter-spacing:-.01em;margin:0;
+  }
+  .section-note{font-family:var(--body);color:var(--muted);font-size:17px;max-width:46ch}
+
+  /* ---- the stack ---- */
+  .stack{margin-top:30px;display:grid;gap:0}
+  .layer{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:0 26px;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+    align-items:start;
+  }
+  .layer:first-child{border-top:none}
+  .layer .idx{
+    font-family:var(--mono);font-size:14px;color:var(--signal);
+    padding-top:5px;letter-spacing:.04em;
+  }
+  .layer .tag{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 7px;
+  }
+  .layer h3{
+    font-family:var(--display);font-weight:500;font-size:21px;
+    letter-spacing:-.01em;margin:0 0 4px;line-height:1.2;
+  }
+  .layer .where{font-family:var(--mono);font-size:13px;color:var(--signal-deep);margin:0 0 12px}
+  .layer p{margin:0;font-size:17.5px;line-height:1.5;color:#26302f;max-width:60ch}
+  .layer .venue{
+    display:inline-block;margin-top:13px;
+    font-family:var(--mono);font-size:12.5px;color:var(--muted);
+  }
+  .layer .venue b{color:var(--ink);font-weight:500}
+
+  .layer.flag{
+    background:var(--surface);
+    border-radius:14px;
+    border-top:none;
+    margin:14px 0;
+    padding:30px 28px;
+    box-shadow:0 1px 0 var(--line), 0 18px 40px -34px rgba(15,30,29,.55);
+    position:relative;
+  }
+  .layer.flag::before{
+    content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;
+    background:var(--signal);border-radius:3px;
+  }
+  .layer.flag .idx{color:var(--signal)}
+
+  /* ---- in progress ---- */
+  .next{
+    margin-top:26px;display:grid;grid-template-columns:64px 1fr;gap:0 26px;align-items:start;
+  }
+  .next .arrow{font-family:var(--mono);color:var(--signal);font-size:14px;padding-top:5px}
+  .next h3{font-family:var(--display);font-weight:500;font-size:21px;margin:0 0 4px;letter-spacing:-.01em}
+  .next p{margin:0;font-size:17.5px;color:#26302f;max-width:60ch}
+  .next .venue{display:inline-block;margin-top:11px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+
+  /* ---- background ---- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:28px}
+  .block .blabel{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  .edu h3{font-family:var(--display);font-weight:500;font-size:19px;margin:0 0 2px}
+  .edu .where{font-family:var(--mono);font-size:13px;color:var(--signal-deep);margin:0 0 4px}
+  .edu p{margin:0;font-size:16.5px;color:var(--muted)}
+  .skills dl{margin:0;display:grid;gap:14px}
+  .skills dt{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--signal-deep);margin-bottom:3px}
+  .skills dd{margin:0;font-size:16.5px;line-height:1.45;color:#26302f}
+  .langs{margin-top:26px}
+  .langs p{margin:0;font-size:16.5px;color:#26302f}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:46px 0 60px}
+  .foot{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+  .foot .links{margin-top:0}
+  .foot .place{font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+  /* ---- reveal ---- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:720px){
+    body{font-size:17px}
+    .layer,.next{grid-template-columns:1fr;gap:0}
+    .layer .idx,.next .arrow{padding-top:0;margin-bottom:8px}
+    .layer.flag{padding:26px 22px}
+    .grid2{grid-template-columns:1fr;gap:34px}
+    #field{-webkit-mask-image:radial-gradient(150% 70% at 70% 16%,#000 0%,#000 40%,transparent 72%);mask-image:radial-gradient(150% 70% at 70% 16%,#000 0%,#000 40%,transparent 72%);opacity:.55}
+    .vision{max-width:none}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <header class="hero">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <p class="eyebrow reveal">Computational biology · representation learning · interpretability</p>
+      <h1 class="name reveal">Youssef Naciri&nbsp;Zerta</h1>
+      <p class="vision reveal">I build toward interpretable, identifiable representations across the modalities of life — <em>world models of biology</em> that recover mechanism rather than merely fit data, and earn trust by surviving identifiability and false-discovery control.</p>
+      <nav class="links reveal" aria-label="Profiles">
+        <a href="mailto:youssef.zerta@biomedtech.ueuromed.org"><span>↳</span> Email</a>
+        <a href="https://scholar.google.com/citations?user=NO59fb4AAAAJ&hl=en"><span>↳</span> Google Scholar</a>
+        <a href="https://github.com/L1BOLL"><span>↳</span> GitHub</a>
+        <a href="cv.pdf"><span>↳</span> CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The program</h2>
+        <p class="section-note">One research program seen from successive layers of a single model — from the bench, up through structure, latent state, and multi-omics readout, to whether the learned representation is real.</p>
+      </div>
+
+      <div class="stack">
+
+        <article class="layer">
+          <div class="idx">01</div>
+          <div>
+            <p class="tag">Data at the bench · organism-in-environment</p>
+            <h3>Multiplex bacterial interaction networks</h3>
+            <p class="where">Université Euromed de Fès — undergraduate research</p>
+            <p>A trait-resolved interaction study across 60 soil bacterial strains, generating 12 directed interaction layers from large-scale pairwise assays. A multilayer network pipeline over the resulting 3D tensor yields a 4-dimensional ecological embedding that classifies microbial strategies across antagonistic, metabolic, and morphogenetic modes.</p>
+            <span class="venue"><b>First author</b> · under review, ISME&nbsp;J</span>
+          </div>
+        </article>
+
+        <article class="layer">
+          <div class="idx">02</div>
+          <div>
+            <p class="tag">Structure &amp; prior knowledge</p>
+            <h3>AnnNet → SysBioVerse</h3>
+            <p class="where">EMBL-EBI, Saez Lab — lead developer</p>
+            <p>A standardized Python library for high-performance biological network science and graph analytics — the prior-knowledge substrate mechanistic models are built on. Its APIs for topological representation and graph-based inference are used by groups at EMBL-EBI and Imperial College London, and it is growing into SysBioVerse, an open, scverse-style ecosystem for the structural layer.</p>
+            <span class="venue"><b>First author</b> · preprint, under review at Bioinformatics</span>
+          </div>
+        </article>
+
+        <article class="layer">
+          <div class="idx">03</div>
+          <div>
+            <p class="tag">Latent state</p>
+            <h3>Single-cell representation learning</h3>
+            <p class="where">Helmholtz Munich, Lücken Lab — research collaborator</p>
+            <p>An architecture combining contrastive learning and multi-head attention to learn patient-level embeddings from single-cell transcriptomics. The representation reaches state-of-the-art results on disease-stratification benchmarks, and its transfer behavior across systems is used as a direct probe of representation quality.</p>
+            <span class="venue"><b>Preprint</b> · “Great patients embed alike: contrastive learning for sample representation from single-cell data”</span>
+          </div>
+        </article>
+
+        <article class="layer">
+          <div class="idx">04</div>
+          <div>
+            <p class="tag">Multi-omics readout</p>
+            <h3>AI-powered biomarker discovery</h3>
+            <p class="where">MD Anderson Cancer Center &amp; KAUST — research collaborator</p>
+            <p>An end-to-end machine-learning pipeline for cancer biomarker identification from multi-omics data — raw genomics through feature engineering, model training, and statistical validation — surfacing novel biomarker candidates across multiple cancer types.</p>
+            <span class="venue">Survival analysis · pathway enrichment · dimensionality reduction</span>
+          </div>
+        </article>
+
+        <article class="layer flag">
+          <div class="idx">05</div>
+          <div>
+            <p class="tag">Auditing &amp; identifiability</p>
+            <h3>Causal identifiability of sparse-autoencoder features in foundation models</h3>
+            <p class="where">Sole author</p>
+            <p>A causally-grounded test of whether the interpretability “features” read out of a genomic foundation model are trustworthy, using saturation-mutagenesis MPRA for per-base-pair causal ground truth. A real aggregate causal signal survives a full control suite — yet the per-feature SAE decomposition is non-identifiable: causal features barely reproduce across retrains, a second SAE family recovers a near-disjoint causal set from identical activations (cross-family Jaccard ≈ 0.01), and a single supervised direction stably decodes the effect. The failure is the decomposition, not the model. Generalizes across two SAE families (TopK, Gated) and two architectures (HyenaDNA, Caduceus).</p>
+            <span class="venue"><b>Sole author</b> · under submission, MLCB</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>In progress</h2>
+      </div>
+      <div class="next">
+        <div class="arrow">→</div>
+        <div>
+          <h3>Unifying genomic and proteomic representations of life</h3>
+          <p>Aligning two foundation models into a shared representation that reasons across the modalities of biological sequence — closing the loop from molecular state to mechanism.</p>
+          <span class="venue">In preparation · target ICLR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>Background</h2></div>
+      <div class="grid2">
+
+        <div class="block edu">
+          <p class="blabel">Education</p>
+          <h3>State Engineer (Diplôme d’Ingénieur d’État), Biotechnology</h3>
+          <p class="where">Université Euromed de Fès (UEMF), Morocco</p>
+          <p>Expected June 2027 · wet-lab-trained biotechnology engineer. Coursework in metabolic engineering, recombinant DNA technology, advanced microbiology, optimization, probability &amp; statistics.</p>
+
+          <div class="langs">
+            <p class="blabel">Languages</p>
+            <p>English &amp; French (fluent) · Arabic &amp; Tamazight (native) · Spanish (basic)</p>
+          </div>
+        </div>
+
+        <div class="block skills">
+          <p class="blabel">What I work with</p>
+          <dl>
+            <div>
+              <dt>Interpretability &amp; identifiability</dt>
+              <dd>Sparse autoencoders, mechanistic interpretability, feature identifiability, false-discovery control, causal modeling</dd>
+            </div>
+            <div>
+              <dt>Machine learning</dt>
+              <dd>Representation &amp; contrastive learning, graph neural networks, foundation models, symbolic regression</dd>
+            </div>
+            <div>
+              <dt>Computational biology</dt>
+              <dd>Single-cell genomics, multi-omics integration, network &amp; mechanistic modeling, survival analysis, pathway enrichment</dd>
+            </div>
+            <div>
+              <dt>Engineering</dt>
+              <dd>Python (PyTorch, scikit-learn), C/C++, R, Bash, Docker, GCP · API &amp; library design</dd>
+            </div>
+            <div>
+              <dt>Wet lab</dt>
+              <dd>Recombinant DNA technology, genome engineering, molecular cloning, high-throughput bacterial culture</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <nav class="links" aria-label="Profiles">
+      <a href="mailto:youssef.zerta@biomedtech.ueuromed.org"><span>↳</span> Email</a>
+      <a href="REPLACE_SCHOLAR_URL"><span>↳</span> Google Scholar</a>
+      <a href="REPLACE_GITHUB_URL"><span>↳</span> GitHub</a>
+      <a href="cv.pdf"><span>↳</span> CV</a>
+    </nav>
+    <span class="place">Fez, Morocco</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var els = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    els.forEach(function(e){e.classList.add("in")});
+  }else{
+    els.forEach(function(e,i){ e.style.transitionDelay = (i*90)+"ms"; });
+    requestAnimationFrame(function(){ els.forEach(function(e){e.classList.add("in")}); });
+  }
+
+  var canvas = document.getElementById("field");
+  if(!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+  var w,h,dpr,pts;
+
+  function rand(a,b){return a+Math.random()*(b-a)}
+  function gauss(){var u=Math.random(),v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+
+  function build(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var cx = w*0.74, cy = h*0.42;
+    var spread = Math.min(w,h)*0.34;
+    var clusters = [
+      {x:cx, y:cy, s:1.0, teal:false},
+      {x:cx+spread*0.7, y:cy-spread*0.5, s:0.62, teal:true},
+      {x:cx-spread*0.6, y:cy+spread*0.55, s:0.7, teal:false},
+      {x:cx+spread*0.2, y:cy+spread*0.75, s:0.5, teal:true}
+    ];
+    var n = Math.round(Math.min(160, (w*h)/5200));
+    pts = [];
+    for(var i=0;i<n;i++){
+      var c = clusters[i%clusters.length];
+      var sp = spread*c.s*0.5;
+      pts.push({
+        bx:c.x+gauss()*sp, by:c.y+gauss()*sp,
+        r:rand(0.8,2.2),
+        a:rand(0.10,0.42),
+        teal:c.teal && Math.random()<0.65,
+        ph:rand(0,Math.PI*2), amp:rand(2,7), sp:rand(0.10,0.30)
+      });
+    }
+  }
+
+  function draw(t){
+    ctx.clearRect(0,0,w,h);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      var dx = reduce?0:Math.cos(t*0.0004*p.sp+p.ph)*p.amp;
+      var dy = reduce?0:Math.sin(t*0.0004*p.sp+p.ph*1.3)*p.amp;
+      ctx.beginPath();
+      ctx.arc(p.bx+dx, p.by+dy, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.teal ? "rgba(31,111,120,"+p.a+")" : "rgba(15,30,29,"+(p.a*0.8)+")";
+      ctx.fill();
+    }
+    if(!reduce) requestAnimationFrame(draw);
+  }
+
+  function start(){ build(); if(reduce){ draw(0); } else { requestAnimationFrame(draw); } }
+  var rt;
+  window.addEventListener("resize", function(){ clearTimeout(rt); rt=setTimeout(start,180); });
+  start();
+})();
+</script>
+</body>
+</html>
