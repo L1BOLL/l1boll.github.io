@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Youssef Naciri Zerta — Systems Biology &amp; Representation Learning</title>
-<meta name="description" content="Youssef Naciri Zerta — building interpretable, identifiable representations across the modalities of life. Computational systems biology, foundation models, mechanistic interpretability." />
+<title>Youssef Naciri Zerta — Computational biology &amp; representation learning</title>
+<meta name="description" content="Youssef Naciri Zerta — building interpretable, identifiable representations across the modalities of life. Computational biology, foundation models, mechanistic interpretability." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -128,6 +128,12 @@
     font-family:var(--mono);font-size:12.5px;color:var(--muted);
   }
   .layer .venue b{color:var(--ink);font-weight:500}
+  .venue a{
+    color:var(--signal-deep);text-decoration:none;
+    border-bottom:1px solid var(--line);
+    transition:color .18s ease,border-color .18s ease;
+  }
+  .venue a:hover{color:var(--signal);border-color:var(--signal)}
 
   .layer.flag{
     background:var(--surface);
@@ -225,7 +231,7 @@
             <h3>Multiplex bacterial interaction networks</h3>
             <p class="where">Université Euromed de Fès — undergraduate research</p>
             <p>A trait-resolved interaction study across 60 soil bacterial strains, generating 12 directed interaction layers from large-scale pairwise assays. A multilayer network pipeline over the resulting 3D tensor yields a 4-dimensional ecological embedding that classifies microbial strategies across antagonistic, metabolic, and morphogenetic modes.</p>
-            <span class="venue"><b>First author</b> · under review, ISME&nbsp;J</span>
+            <span class="venue"><b>First author</b> · in preparation · target: ISME&nbsp;J</span>
           </div>
         </article>
 
@@ -236,7 +242,7 @@
             <h3>AnnNet → SysBioVerse</h3>
             <p class="where">EMBL-EBI, Saez Lab — lead developer</p>
             <p>A standardized Python library for high-performance biological network science and graph analytics — the prior-knowledge substrate mechanistic models are built on. Its APIs for topological representation and graph-based inference are used by groups at EMBL-EBI and Imperial College London, and it is growing into SysBioVerse, an open, scverse-style ecosystem for the structural layer.</p>
-            <span class="venue"><b>First author</b> · preprint, under review at Bioinformatics</span>
+            <span class="venue"><b>First author</b> · in preparation · target: Bioinformatics</span>
           </div>
         </article>
 
@@ -247,7 +253,7 @@
             <h3>Single-cell representation learning</h3>
             <p class="where">Helmholtz Munich, Lücken Lab — research collaborator</p>
             <p>An architecture combining contrastive learning and multi-head attention to learn patient-level embeddings from single-cell transcriptomics. The representation reaches state-of-the-art results on disease-stratification benchmarks, and its transfer behavior across systems is used as a direct probe of representation quality.</p>
-            <span class="venue"><b>Preprint</b> · “Great patients embed alike: contrastive learning for sample representation from single-cell data”</span>
+            <span class="venue"><b>Preprint</b> · <a href="https://openreview.net/pdf/d4512c90938ad13d1deecb2377ff067cbd702b98.pdf">“Great patients embed alike: contrastive learning for sample representation from single-cell data”</a></span>
           </div>
         </article>
 
@@ -258,7 +264,7 @@
             <h3>AI-powered biomarker discovery</h3>
             <p class="where">MD Anderson Cancer Center &amp; KAUST — research collaborator</p>
             <p>An end-to-end machine-learning pipeline for cancer biomarker identification from multi-omics data — raw genomics through feature engineering, model training, and statistical validation — surfacing novel biomarker candidates across multiple cancer types.</p>
-            <span class="venue">Survival analysis · pathway enrichment · dimensionality reduction</span>
+            <span class="venue">In preparation · survival analysis · pathway enrichment · dimensionality reduction</span>
           </div>
         </article>
 
@@ -269,7 +275,7 @@
             <h3>Causal identifiability of sparse-autoencoder features in foundation models</h3>
             <p class="where">Sole author</p>
             <p>A causally-grounded test of whether the interpretability “features” read out of a genomic foundation model are trustworthy, using saturation-mutagenesis MPRA for per-base-pair causal ground truth. A real aggregate causal signal survives a full control suite — yet the per-feature SAE decomposition is non-identifiable: causal features barely reproduce across retrains, a second SAE family recovers a near-disjoint causal set from identical activations (cross-family Jaccard ≈ 0.01), and a single supervised direction stably decodes the effect. The failure is the decomposition, not the model. Generalizes across two SAE families (TopK, Gated) and two architectures (HyenaDNA, Caduceus).</p>
-            <span class="venue"><b>Sole author</b> · under submission, MLCB</span>
+            <span class="venue"><b>Sole author</b> · preprint · target: MLCB</span>
           </div>
         </article>
 
@@ -287,7 +293,7 @@
         <div>
           <h3>Unifying genomic and proteomic representations of life</h3>
           <p>Aligning two foundation models into a shared representation that reasons across the modalities of biological sequence — closing the loop from molecular state to mechanism.</p>
-          <span class="venue">In preparation · target ICLR</span>
+          <span class="venue">In preparation · target: ICLR</span>
         </div>
       </div>
     </div>
