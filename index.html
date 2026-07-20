@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Youssef Naciri Zerta — Computational biology &amp; representation learning</title>
-<meta name="description" content="Youssef Naciri Zerta — building interpretable, identifiable representations across the modalities of life. Computational biology, foundation models, mechanistic interpretability." />
+<meta name="description" content="Youssef Naciri Zerta — identifiability and causal ground truth for biological foundation models. Computational systems biology, representation learning, mechanistic interpretability." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -76,6 +76,7 @@
     margin:26px 0 0;
   }
   .vision em{font-style:italic;color:var(--signal-deep)}
+  .avail{margin:22px 0 0;max-width:56ch;line-height:1.7}
   .links{
     display:flex;flex-wrap:wrap;gap:10px 26px;
     margin-top:34px;
@@ -190,6 +191,7 @@
     .grid2{grid-template-columns:1fr;gap:34px}
     #field{-webkit-mask-image:radial-gradient(150% 70% at 70% 16%,#000 0%,#000 40%,transparent 72%);mask-image:radial-gradient(150% 70% at 70% 16%,#000 0%,#000 40%,transparent 72%);opacity:.55}
     .vision{max-width:none}
+    .avail{max-width:none}
   }
 
   @media (prefers-reduced-motion:reduce){
@@ -207,6 +209,7 @@
       <p class="eyebrow reveal">Computational systems biology · representation learning · interpretability</p>
       <h1 class="name reveal">Youssef Naciri&nbsp;Zerta</h1>
       <p class="vision reveal">I build toward interpretable, identifiable representations across the modalities of life — <em>world models of biology</em> that recover mechanism rather than merely fit data, and earn trust by surviving identifiability and false-discovery control.</p>
+      <p class="eyebrow avail reveal">Summer 2026 at EMBL-EBI, Hinxton · Seeking a host group for a six-month research thesis, February–July 2027</p>
       <nav class="links reveal" aria-label="Profiles">
         <a href="mailto:youssef.zerta@biomedtech.ueuromed.org"><span>↳</span> Email</a>
         <a href="https://scholar.google.com/citations?user=NO59fb4AAAAJ&hl=en"><span>↳</span> Google Scholar</a>
@@ -241,7 +244,7 @@
           <div>
             <p class="tag">Structure &amp; prior knowledge</p>
             <h3><a href="https://saezlab.github.io/annnet/">AnnNet → SysBioVerse</a></h3>
-            <p class="where">EMBL-EBI, Saez Lab — lead developer</p>
+            <p class="where">EMBL-EBI, Saez Lab — lead developer · hybrid · on site summer 2026</p>
             <p>AnnNet (Annotated Network) is a unified graph data structure for complex biological networks — an AnnData-style annotated container that keeps heterogeneous topology (directed, signed, hyperedges, multilayer, condition-specific slices) on one sparse incidence core, with typed annotation tables, lossless native storage, and lazy interoperability with NetworkX, igraph, graph-tool, and PyTorch Geometric. The package and its data structure are used by groups at EMBL-EBI and Imperial College London, and anchor SysBioVerse — an open, scverse-style ecosystem for systems and network biology.</p>
             <span class="venue"><b>First author</b> · in preparation · target: Bioinformatics</span>
           </div>
@@ -265,7 +268,7 @@
             <h3>AI-powered biomarker discovery</h3>
             <p class="where">MD Anderson Cancer Center &amp; KAUST — research collaborator</p>
             <p>An end-to-end machine-learning pipeline for cancer biomarker identification from multi-omics data — raw genomics through feature engineering, model training, and statistical validation — surfacing novel biomarker candidates across multiple cancer types.</p>
-            <span class="venue">In preparation · survival analysis · pathway enrichment · dimensionality reduction</span>
+            <span class="venue">In preparation</span>
           </div>
         </article>
 
@@ -273,10 +276,21 @@
           <div class="idx">05</div>
           <div>
             <p class="tag">Auditing &amp; identifiability</p>
-            <h3>Causal identifiability of sparse-autoencoder features in foundation models</h3>
+            <h3>Causal identifiability of sparse-autoencoder features</h3>
             <p class="where">Sole author</p>
             <p>A causally-grounded test of whether the interpretability “features” read out of a genomic foundation model are trustworthy, using saturation-mutagenesis MPRA for per-base-pair causal ground truth. A real aggregate causal signal survives a full control suite — yet the per-feature SAE decomposition is non-identifiable: causal features barely reproduce across retrains, a second SAE family recovers a near-disjoint causal set from identical activations (cross-family Jaccard ≈ 0.01), and a single supervised direction stably decodes the effect. The failure is the decomposition, not the model. Generalizes across two SAE families (TopK, Gated) and two architectures (HyenaDNA, Caduceus).</p>
-            <span class="venue"><b>Sole author</b> · preprint <a href="https://zenodo.org/records/20800272">“A Causal Signal Without Causal Features”</a> · target: MLCB</span>
+            <span class="venue"><b>Sole author</b> · submitted, MLCB 2026 · preprint <a href="https://zenodo.org/records/20800272">“A Causal Signal Without Causal Features”</a></span>
+          </div>
+        </article>
+
+        <article class="layer flag">
+          <div class="idx">06</div>
+          <div>
+            <p class="tag">Auditing &amp; identifiability · cross-modal</p>
+            <h3>Do protein and DNA models share a world?</h3>
+            <p class="where">Independent research</p>
+            <p>The central dogma gives a setting no other multimodal problem has for free: a coding mutation is one physical event spelled in two alphabets. If protein and genomic foundation models both recovered mechanism, their representations of that event should agree. Tested against endogenous saturation genome editing as interventional ground truth, they do not. The functional signal is <em>protein-private</em>, not shared — protein-private ρ = 0.443 against shared 0.240 under position-grouped nested cross-validation — while a DNA-only abundance signal loads on the DNA-private subspace exactly where biology requires it. Protein models converge 3–5× more than DNA models at matched family relatedness, calibrated against untrained-encoder floors and same-modality ceilings across four alignment metrics. Position-grouped cross-validation retired a ~3× leakage-inflated DNA effect, and the full result reproduces end-to-end on a second gene with frozen analysis code and no retuning. A pre-registered rejection of the Platonic Representation Hypothesis for biological function — the first tested against interventional measurements rather than benchmarks.</p>
+            <span class="venue"><b>In preparation</b> · target: ICLR · ESM2 · ESM-C · Nucleotide Transformer v2 · HyenaDNA</span>
           </div>
         </article>
 
@@ -288,13 +302,14 @@
     <div class="wrap">
       <div class="section-head">
         <h2>In progress</h2>
+        <p class="section-note">Where the diagnosis goes next: from showing that two modalities disagree to naming what each one holds.</p>
       </div>
       <div class="next">
         <div class="arrow">→</div>
         <div>
-          <h3>Unifying genomic and proteomic representations of life</h3>
-          <p>Aligning two foundation models into a shared representation that reasons across the modalities of biological sequence — closing the loop from molecular state to mechanism.</p>
-          <span class="venue">In preparation · target: ICLR</span>
+          <h3>Naming the shared and private subspaces</h3>
+          <p>Knowing the functional signal is protein-private says where mechanism lives, not what it is. Phase two identifies what each subspace encodes — biophysical factors, splicing, regulatory context — and tests whether sparse-autoencoder features correspond across modalities at all, given that within a single modality they already fail to reproduce. Frontier-scale genomic models remain untested, and that is a stated limitation rather than a silent one.</p>
+          <span class="venue">Phase two · cross-modal feature correspondence · Evo-scale models pending compute</span>
         </div>
       </div>
     </div>
@@ -309,7 +324,7 @@
           <p class="blabel">Education</p>
           <h3>State Engineer (Diplôme d’Ingénieur d’État), Biotechnology</h3>
           <p class="where">Université Euromed de Fès (UEMF), Morocco</p>
-          <p>Expected June 2027 · wet-lab-trained biotechnology engineer. Coursework in metabolic engineering, recombinant DNA technology, advanced microbiology, optimization, probability &amp; statistics.</p>
+          <p>Expected June 2027 · wet-lab-trained biotechnology engineer. Coursework in metabolic engineering, recombinant DNA technology, advanced microbiology, viral genetics, optimization, probability &amp; statistics.</p>
 
           <div class="langs">
             <p class="blabel">Languages</p>
@@ -321,20 +336,28 @@
           <p class="blabel">What I work with</p>
           <dl>
             <div>
+              <dt>Foundation models</dt>
+              <dd>ESM2, ESM-C, Nucleotide Transformer, HyenaDNA, Caduceus, Evo — embedding extraction, frozen-encoder pipelines, probing, domain adaptation, evaluation-task design</dd>
+            </div>
+            <div>
               <dt>Interpretability &amp; identifiability</dt>
-              <dd>Sparse autoencoders, mechanistic interpretability, feature identifiability, false-discovery control, causal modeling</dd>
+              <dd>Sparse autoencoders, mechanistic interpretability, feature identifiability, causal and mechanistic modeling</dd>
+            </div>
+            <div>
+              <dt>Evaluation &amp; statistics</dt>
+              <dd>Nested and group-structured cross-validation, leakage diagnosis, false-discovery control, floor/ceiling calibration, pre-registration, replication design</dd>
             </div>
             <div>
               <dt>Machine learning</dt>
-              <dd>Representation &amp; contrastive learning, graph neural networks, foundation models, symbolic regression</dd>
+              <dd>Representation &amp; contrastive learning, graph neural networks, subspace and canonical-correlation methods, transfer evaluation</dd>
             </div>
             <div>
               <dt>Computational biology</dt>
-              <dd>Single-cell genomics, multi-omics integration, network &amp; mechanistic modeling, survival analysis, pathway enrichment</dd>
+              <dd>Variant-effect prediction, saturation genome editing / DMS / MPRA, single-cell genomics, multi-omics integration, network &amp; mechanistic modeling</dd>
             </div>
             <div>
               <dt>Engineering</dt>
-              <dd>Python (PyTorch, scikit-learn), C/C++, R, Bash, Docker, GCP · API &amp; library design</dd>
+              <dd>Python (PyTorch, NumPy, scikit-learn), C/C++, R, Bash, Docker, GCP · CUDA environment isolation, cached array pipelines, API &amp; library design</dd>
             </div>
             <div>
               <dt>Wet lab</dt>
