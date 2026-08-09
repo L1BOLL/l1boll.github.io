@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Youssef Naciri Zerta — Causal representation learning &amp; gene regulation</title>
-<meta name="description" content="Youssef Naciri Zerta — causal representation learning for biological systems, with a focus on gene regulation, perturbational genomics, and mechanistic modeling." />
+<meta name="description" content="Youssef Naciri Zerta — causal representation learning for gene regulation and systems biology: perturbational genomics, identifiability, and causal network inference." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -327,10 +327,14 @@
   }
 
   .next p{
-    margin:0;
+    margin:0 0 14px;
     font-size:17.5px;
     color:#26302f;
     max-width:60ch;
+  }
+
+  .next p:last-of-type{
+    margin-bottom:0;
   }
 
   .next .venue{
@@ -522,7 +526,7 @@
 
     <div class="wrap">
       <p class="eyebrow reveal">
-        Causal representation learning · gene regulation · perturbational biology
+        Causal representation learning · gene regulation · systems biology
       </p>
 
       <h1 class="name reveal">
@@ -530,16 +534,16 @@
       </h1>
 
       <p class="vision reveal">
-        I study how biological systems can be represented in ways that support
-        <em>causal reasoning rather than prediction alone</em>. My main interest
-        is gene regulation: learning representations of cellular state and regulatory
-        structure that remain meaningful under intervention, transfer across contexts,
-        and expose the mechanisms generating observed variation.
+        I work on what a representation of a biological system has to satisfy in order to
+        predict behaviour <em>under intervention</em>, rather than only describe state.
+        My subject is gene regulation, and I approach it from the infrastructure that makes
+        causal inference composable, from interventional tests of what current
+        representations actually license, and from the formalisms those tests rule out.
       </p>
 
       <p class="eyebrow avail reveal">
-        Summer 2026 at EMBL-EBI, Hinxton · Seeking a host group for a six-month
-        research thesis, February–September 2027
+        EMBL-EBI, Hinxton — Saez Lab, since 2025 · Seeking a host group for a six-month
+        research thesis, February–August 2027
       </p>
 
       <nav class="links reveal" aria-label="Profiles">
@@ -566,9 +570,9 @@
       <div class="section-head">
         <h2>Selected research</h2>
         <p class="section-note">
-          Work across biological networks, single-cell representation learning,
-          genomic models, and interventional evaluation — converging on how
-          representations relate to biological mechanism.
+          Causal network inference, single-cell representation learning, interventional
+          evaluation of learned representations, and experimental work on microbial
+          regulation — converging on one question.
         </p>
       </div>
 
@@ -577,24 +581,27 @@
         <article class="layer">
           <div class="idx">01</div>
           <div>
-            <p class="tag">Experimental systems biology · interaction structure</p>
+            <p class="tag">Causal systems biology · infrastructure</p>
 
-            <h3>Multiplex bacterial interaction networks</h3>
+            <h3>SysBioVerse</h3>
 
             <p class="where">
-              Université Euromed de Fès — undergraduate research
+              Open Targets — EMBL-EBI, Saez Lab · lead developer
             </p>
 
             <p>
-              A trait-resolved interaction study across 60 soil bacterial strains,
-              generating 12 directed interaction layers from large-scale pairwise assays.
-              A multilayer network pipeline over the resulting 3D tensor yields a
-              4-dimensional ecological embedding that classifies microbial strategies
-              across antagonistic, metabolic, and morphogenetic modes.
+              A unified ecosystem for methods that infer causal and mechanistic biological
+              structure from omics data and prior knowledge: the intended equivalent of
+              scverse for causal network inference. The problem is representational before
+              it is engineering. Methods disagree about what a causal biological structure
+              even is, and a shared interface has to expose enough that regulatory,
+              signalling, metabolic, cell–cell and multi-omic outputs can be compared,
+              benchmarked and composed within one system, rather than reimplemented per
+              paper against incompatible data structures.
             </p>
 
             <span class="venue">
-              <b>First author</b> · in preparation · target: ISME&nbsp;J
+              <b>Lead developer</b> · Open Targets
             </span>
           </div>
         </article>
@@ -603,34 +610,29 @@
         <article class="layer">
           <div class="idx">02</div>
           <div>
-            <p class="tag">
-              Biological networks · structured representations
-            </p>
+            <p class="tag">Biological networks · structured representations</p>
 
             <h3>
-              <a href="https://saezlab.github.io/annnet/">
-                AnnNet → SysBioVerse
-              </a>
+              <a href="https://saezlab.github.io/annnet/">AnnNet</a>
             </h3>
 
             <p class="where">
-              EMBL-EBI, Saez Lab — lead developer · hybrid · on site summer 2026
+              EMBL-EBI, Saez Lab · lead developer
             </p>
 
             <p>
-              AnnNet (Annotated Network) is a unified graph data structure for complex
-              biological networks — an AnnData-style annotated container that keeps
-              heterogeneous topology (directed, signed, hyperedges, multilayer,
-              condition-specific slices) on one sparse incidence core, with typed
-              annotation tables, lossless native storage, and lazy interoperability
-              with NetworkX, igraph, graph-tool, and PyTorch Geometric. The package
-              and its data structure are used by groups at EMBL-EBI and Imperial
-              College London, and anchor SysBioVerse — an open, scverse-style
-              ecosystem for systems and network biology.
+              An AnnData-style annotated container for complex biological networks:
+              directed, signed, hyperedge, multilayer and condition-specific topology on a
+              single sparse incidence core, with typed annotation tables, lossless native
+              storage, and lazy interoperability with NetworkX, igraph, graph-tool and
+              PyTorch Geometric. The classical directed graph is a special case rather than
+              the frame — which matters, because forcing biological structure into it
+              discards exactly the conditioning that makes a network claim causal. Used by
+              groups at EMBL-EBI and Imperial College London, and anchors SysBioVerse.
             </p>
 
             <span class="venue">
-              <b>First author</b> · in preparation · target: Bioinformatics
+              <b>Co-first author</b> · in preparation · target: Bioinformatics
             </span>
           </div>
         </article>
@@ -639,24 +641,21 @@
         <article class="layer">
           <div class="idx">03</div>
           <div>
-            <p class="tag">
-              Cellular state · representation learning
-            </p>
+            <p class="tag">Cellular state · representation learning</p>
 
-            <h3>
-              Single-cell representation learning
-            </h3>
+            <h3>SampleCLR — patient-level representations from single-cell data</h3>
 
             <p class="where">
-              Helmholtz Munich, Lücken Lab — research collaborator
+              Helmholtz Munich, Lücken Lab · research collaborator
             </p>
 
             <p>
-              An architecture combining contrastive learning and multi-head attention
-              to learn patient-level embeddings from single-cell transcriptomics.
-              The representation reaches state-of-the-art results on
-              disease-stratification benchmarks, and its transfer behavior across
-              systems is used as a direct probe of representation quality.
+              An architecture combining contrastive learning and multi-head attention to
+              learn patient-level embeddings from single-cell transcriptomics, reaching
+              state-of-the-art results on disease-stratification benchmarks. I contributed
+              interpretability and transfer-learning analyses, and to the architecture
+              design. Whether a representation transfers across biological systems rather
+              than fitting its benchmark is the question my later work formalises.
             </p>
 
             <span class="venue">
@@ -673,41 +672,10 @@
         <article class="layer">
           <div class="idx">04</div>
           <div>
-            <p class="tag">
-              Multi-omics · predictive biology
-            </p>
+            <p class="tag">Representational convergence · interventional grounding</p>
 
             <h3>
-              AI-powered biomarker discovery
-            </h3>
-
-            <p class="where">
-              MD Anderson Cancer Center &amp; KAUST — research collaborator
-            </p>
-
-            <p>
-              An end-to-end machine-learning pipeline for cancer biomarker
-              identification from multi-omics data — raw genomics through feature
-              engineering, model training, and statistical validation — surfacing
-              novel biomarker candidates across multiple cancer types.
-            </p>
-
-            <span class="venue">
-              In preparation
-            </span>
-          </div>
-        </article>
-
-
-        <article class="layer flag">
-          <div class="idx">05</div>
-          <div>
-            <p class="tag">
-              Causal evaluation · identifiability
-            </p>
-
-            <h3>
-              Causal identifiability of sparse-autoencoder features
+              Testing representational convergence against interventional ground truth
             </h3>
 
             <p class="where">
@@ -715,21 +683,51 @@
             </p>
 
             <p>
-              A causally-grounded test of whether the interpretability “features”
-              read out of a genomic foundation model are trustworthy, using
-              saturation-mutagenesis MPRA for per-base-pair causal ground truth.
-              A real aggregate causal signal survives a full control suite — yet
-              the per-feature SAE decomposition is non-identifiable: causal features
-              barely reproduce across retrains, a second SAE family recovers a
-              near-disjoint causal set from identical activations
-              (cross-family Jaccard ≈ 0.01), and a single supervised direction
-              stably decodes the effect. The failure is the decomposition, not the
-              model. Generalizes across two SAE families (TopK, Gated) and two
-              architectures (HyenaDNA, Caduceus).
+              A widely reported measure of cross-modal representational convergence is read
+              against a baseline that is itself capacity-dependent: the baseline rises with
+              the very variable the claim is about. The corrected null follows in closed
+              form, and once it is subtracted the reported scaling trend does not survive.
+              The question is decided on a biological testbed rather than a vision–language
+              one — a coding variant is two exact views of a single object, related by the
+              genetic code and labelled by saturation genome editing, so every term of the
+              null is measured rather than assumed. Using a causal biological assay to
+              settle a question the machine-learning literature could not is the method I
+              want to generalise.
             </p>
 
             <span class="venue">
-              <b>Sole author</b> · submitted, MLCB 2026 · preprint
+              <b>Sole author</b> · under review, ICLR 2027 ·
+              title withheld during double-blind review
+            </span>
+          </div>
+        </article>
+
+
+        <article class="layer">
+          <div class="idx">05</div>
+          <div>
+            <p class="tag">Causal evaluation · identifiability</p>
+
+            <h3>A causal signal without causal features</h3>
+
+            <p class="where">
+              Sole author
+            </p>
+
+            <p>
+              Whether the interpretability “features” read out of a genomic foundation
+              model can be trusted, tested against per-base-pair causal ground truth from
+              saturation-mutagenesis MPRA. A real aggregate causal signal survives the full
+              control suite — but the per-feature decomposition does not. Causal features
+              barely reproduce across retrains, a second autoencoder family recovers a
+              near-disjoint set from identical activations, and a single supervised
+              direction stably decodes what the decomposition could not. The failure is the
+              decomposition, not the model, and it is a constraint on any latent account of
+              gene regulation rather than a verdict on one method.
+            </p>
+
+            <span class="venue">
+              <b>Sole author</b> · under review, MLCB 2026 · preprint
               <a href="https://zenodo.org/records/20800272">
                 “A Causal Signal Without Causal Features”
               </a>
@@ -738,44 +736,55 @@
         </article>
 
 
-        <article class="layer flag">
+        <article class="layer">
           <div class="idx">06</div>
           <div>
-            <p class="tag">
-              Cross-modal representations · interventional grounding
-            </p>
+            <p class="tag">Experimental systems biology · interaction structure</p>
 
-            <h3>
-              Do protein and DNA models share a world?
-            </h3>
+            <h3>Multiplex bacterial interaction networks</h3>
 
             <p class="where">
-              Independent research
+              Université Euromed de Fès
             </p>
 
             <p>
-              The central dogma gives a setting no other multimodal problem has for
-              free: a coding mutation is one physical event spelled in two alphabets.
-              If protein and genomic foundation models both recovered mechanism,
-              their representations of that event should agree. Tested against
-              endogenous saturation genome editing as interventional ground truth,
-              they do not. The functional signal is <em>protein-private</em>, not
-              shared — protein-private ρ = 0.443 against shared 0.240 under
-              position-grouped nested cross-validation — while a DNA-only abundance
-              signal loads on the DNA-private subspace exactly where biology requires
-              it. Protein models converge 3–5× more than DNA models at matched family
-              relatedness, calibrated against untrained-encoder floors and
-              same-modality ceilings across four alignment metrics.
-              Position-grouped cross-validation retired a ~3× leakage-inflated DNA
-              effect, and the full result reproduces end-to-end on a second gene
-              with frozen analysis code and no retuning. A pre-registered rejection
-              of the Platonic Representation Hypothesis for biological function —
-              tested against interventional measurements rather than benchmarks.
+              A trait-resolved interaction study across 60 soil bacterial strains,
+              generating 12 directed interaction layers from large-scale pairwise assays —
+              an interaction tensor rather than a single network. A multilayer analysis of
+              that tensor yields a low-dimensional ecological embedding classifying
+              microbial strategies across antagonistic, metabolic and morphogenetic modes,
+              and shows that interaction sign and strength are context-dependent rather
+              than intrinsic to a strain pair. This is where the limitation motivating
+              AnnNet came from: a single directed graph cannot represent a system whose
+              edges change meaning with condition.
             </p>
 
             <span class="venue">
-              <b>In preparation</b> · target: ICLR · ESM2 · ESM-C ·
-              Nucleotide Transformer v2 · HyenaDNA
+              <b>First author</b> · in preparation · target: ISME&nbsp;J
+            </span>
+          </div>
+        </article>
+
+
+        <article class="layer">
+          <div class="idx">07</div>
+          <div>
+            <p class="tag">Epigenomics · biomarker discovery</p>
+
+            <h3>Biomarker combination detection from epigenomic data</h3>
+
+            <p class="where">
+              MD Anderson Cancer Center &amp; KAUST · research collaborator
+            </p>
+
+            <p>
+              An analysis pipeline for identifying combinations of biomarkers from
+              epigenomic data, from raw signal through feature construction to statistical
+              validation.
+            </p>
+
+            <span class="venue">
+              2024–2025
             </span>
           </div>
         </article>
@@ -789,11 +798,11 @@
     <div class="wrap">
 
       <div class="section-head">
-        <h2>Research direction</h2>
+        <h2>Ongoing direction</h2>
 
         <p class="section-note">
-          From evaluating learned representations to understanding which biological
-          variables remain meaningful under intervention.
+          An open line of work rather than a finished project — where the results above
+          have pushed me, and what I am trying to settle next.
         </p>
       </div>
 
@@ -802,17 +811,51 @@
 
         <div>
           <h3>
-            Causal representations of regulatory systems
+            Regulation in the wrong coordinates
           </h3>
 
           <p>
-            I am interested in representations of cellular and regulatory state
-            that support reasoning across interventions rather than merely
-            reconstructing observations. In particular, I want to understand when
-            latent structure learned from genomic and single-cell measurements
-            corresponds to stable biological variables, what perturbational data
-            can identify or falsify such structure, and how these representations
-            can be used to model gene regulation across contexts.
+            The question I keep returning to is not what regulates what, but in which
+            coordinates that question is well-posed. The gene is a measurement channel
+            biology handed us, not necessarily a causal joint of the system: several
+            distinct maps get conflated under the word, and only one of them — from an
+            intervention at a locus to a displacement of cell state — is genuinely
+            many-to-many. Genes remain perfectly real objects. They may simply be the wrong
+            basis for the causal claim.
+          </p>
+
+          <p>
+            Two long-standing puzzles collapse into one if that is right. Pleiotropy is one
+            gene touching many things; polygenicity is one thing touched by many genes.
+            These need not be two mechanisms requiring two explanations — they can be the
+            same distributed structure read along its rows or along its columns, and
+            missing heritability then looks less like absent information than like variance
+            that appears scattered because the causal units are not gene-shaped. The
+            general reflex: when a field has a stubborn residual, suspect the coordinate
+            system before going looking for more variance.
+          </p>
+
+          <p>
+            What the data has forced so far goes a step further than I expected, and cuts
+            against my own starting position. A learned feature basis is also just a chart.
+            There is no inventory of latent features waiting to be found — resolution is a
+            knob rather than a discovery — which is why a plain gene–gene correlation
+            matrix can outperform a learned overcomplete dictionary: both are coordinate
+            systems on the same continuum, and the gene basis at least carries no
+            estimation error. Three times now, on different statistics, a quantity that
+            looked directly measurable turned out to be manufactured by the act of
+            measuring it. That is not three bugs; it is a constraint on latent-variable
+            accounts of regulation in general.
+          </p>
+
+          <p>
+            So the direction is not gene basis to feature basis. It is toward the objects
+            that are measured rather than inferred: how a system fluctuates on its own, and
+            how it moves when it is pushed. Regulation is the operator between them, and
+            the interesting biology is where the relation between fluctuation and response
+            breaks down. What I want to know is whether that breakage is structured, and
+            what invariant is left to hunt when the rank of the problem turns out not to
+            exist.
           </p>
 
           <span class="venue">
@@ -848,10 +891,10 @@
           </p>
 
           <p>
-            Expected June 2027 · wet-lab-trained biotechnology engineer.
-            Coursework in metabolic engineering, recombinant DNA technology,
-            advanced microbiology, viral genetics, optimization,
-            probability &amp; statistics.
+            Expected June 2027 · five-year engineering degree, Master’s-equivalent,
+            300 ECTS · wet-lab-trained biotechnology engineer. Coursework in systems
+            biology, synthetic biology, recombinant DNA technology, advanced microbiology,
+            statistical genetics, optimization, probability &amp; statistics.
           </p>
 
           <div class="langs">
@@ -880,36 +923,60 @@
               </dt>
 
               <dd>
-                Causal and mechanistic modeling, representation learning,
-                contrastive learning, latent-variable models, sparse autoencoders,
-                subspace methods, canonical-correlation methods, transfer evaluation
+                Causal representation learning, identifiability theory, interventional and
+                counterfactual inference, sparse and overcomplete latent-variable models,
+                contrastive learning, mechanistic interpretability
               </dd>
             </div>
 
 
             <div>
               <dt>
-                Computational genomics
+                Statistical modelling
               </dt>
 
               <dd>
-                Single-cell transcriptomics, perturbational genomics,
-                variant-effect prediction, saturation genome editing,
-                deep mutational scanning, massively parallel reporter assays,
-                multi-omics integration
+                High-dimensional and sparse inference, spectral methods, stochastic
+                dynamics and linear-response theory, subspace and canonical-correlation
+                methods
               </dd>
             </div>
 
 
             <div>
               <dt>
-                Biological networks
+                Evaluation design
               </dt>
 
               <dd>
-                Regulatory and signaling networks, heterogeneous graph
-                representations, multilayer networks, graph neural networks,
-                mechanistic and network-based modeling
+                Interventional ground truth, nested and group-structured cross-validation,
+                leakage diagnosis, floor/ceiling calibration, planted nulls, identifiability
+                diagnostics, pre-registration and replication design
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>
+                Genomics &amp; regulation
+              </dt>
+
+              <dd>
+                Gene regulatory networks, perturbational genomics, single-cell
+                transcriptomics, variant-effect prediction, saturation genome editing,
+                massively parallel reporter assays, statistical genetics
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>
+                Systems biology
+              </dt>
+
+              <dd>
+                Mechanistic modelling, dynamical systems, multilayer and hypergraph
+                formalisms, prior-knowledge integration, graph neural networks
               </dd>
             </div>
 
@@ -920,22 +987,8 @@
               </dt>
 
               <dd>
-                ESM2, ESM-C, Nucleotide Transformer, HyenaDNA, Caduceus, Evo —
-                embedding extraction, frozen-encoder pipelines, probing,
-                domain adaptation, evaluation-task design
-              </dd>
-            </div>
-
-
-            <div>
-              <dt>
-                Evaluation &amp; statistics
-              </dt>
-
-              <dd>
-                Nested and group-structured cross-validation, leakage diagnosis,
-                false-discovery control, floor/ceiling calibration,
-                pre-registration, replication design
+                ESM2, ESM-C, Nucleotide Transformer, HyenaDNA, Caduceus, Evo — embedding
+                extraction, frozen-encoder pipelines, probing, evaluation-task design
               </dd>
             </div>
 
@@ -946,9 +999,9 @@
               </dt>
 
               <dd>
-                Python (PyTorch, NumPy, scikit-learn), C/C++, R, Bash, Docker,
-                GCP · CUDA environment isolation, cached array pipelines,
-                API &amp; library design
+                Python (PyTorch, NumPy, scikit-learn), C/C++, R, Bash, Docker, GCP ·
+                scientific library and API design, open-source maintenance,
+                memory-constrained and cached array pipelines
               </dd>
             </div>
 
