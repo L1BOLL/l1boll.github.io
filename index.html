@@ -249,6 +249,10 @@
     max-width:60ch;
   }
 
+  .layer p + p{
+    margin-top:12px;
+  }
+
   .layer .venue{
     display:inline-block;
     margin-top:13px;
@@ -540,18 +544,17 @@
       </p>
 
       <p class="avail reveal">
-        That is a question about measurement before it is a question about method: what a
-        cell&rsquo;s state actually is, which interventions carry information about it, and at
-        what level of organisation causal relationships become predictable rather than
-        descriptive. I work on it with causal representation learning and identifiability
-        theory, mechanistic and dynamical modelling, perturbational genomics, and the
-        infrastructure that makes causal inference over biological structure comparable —
-        tools for the question rather than the subject of it.
+        Designing an intervention needs a model that predicts what untried interventions will
+        do, and evidence strong enough to trust it. I work on both: which experiments can
+        identify regulatory mechanism, how to represent biological networks whose
+        interactions change with context, and how to check whether a learned representation
+        means what it appears to. I trained as a wet-lab biotechnology engineer; my tools are
+        now mostly causal inference, dynamical modelling and perturbation genomics.
       </p>
 
       <p class="eyebrow avail reveal">
-        EMBL-EBI, Hinxton — Saez Lab since 2025 · Research thesis at EMBL-EBI,
-        February–August 2027 · PhD applications, autumn 2027
+        EMBL-EBI, Hinxton — Saez Lab since 2025 · Research thesis at EMBL-EBI, with
+        wet-lab weeks at the Wellcome Sanger Institute, February–August 2027
       </p>
 
       <nav class="links reveal" aria-label="Profiles">
@@ -578,10 +581,8 @@
       <div class="section-head">
         <h2>Selected research</h2>
         <p class="section-note">
-          Identifiability of perturbation experiments, interventional audits of learned
-          representations, infrastructure for causal network inference, and experimental
-          work on microbial regulation — all of it approaching the control question from a
-          different side.
+          My thesis, the network infrastructure it depends on, the wet-lab work it grew
+          out of, and two audits of learned representations.
         </p>
       </div>
 
@@ -590,42 +591,109 @@
         <article class="layer flag">
           <div class="idx">2026–27</div>
           <div>
-            <p class="tag">Perturbation biology · identifiability</p>
+            <p class="tag">Thesis · perturbation biology · cell-state control</p>
 
             <h3>Can the interventions we perform identify the mechanism we claim?</h3>
 
             <p class="where">
-              EMBL-EBI, Saez Lab · with Rory Maizels (Saez Lab, EMBL-EBI; Parts Group,
-              Sanger; Briscoe Group, The Crick)
+              EMBL-EBI, Saez Lab, with wet-lab weeks at the Wellcome Sanger Institute ·
+              with Rory Maizels
             </p>
 
             <p>
-              Perturbation biology assumes that transcriptomic responses to gene-level
-              interventions are an adequate basis for learning regulatory mechanism. I
-              test that from the identifiability side: which aspects of a regulatory
-              system can in principle be recovered from the interventions actually
-              performed, where information is missing rather than merely noisy, and
-              whether apparent model performance survives systems with known causal
-              ground truth. The instrument is a simulator — ODE models of published gene
-              regulatory networks spanning monostable, multistable and oscillatory
-              dynamics, with a count-sampling observation model — under five intervention
-              classes, of which only knockdown and knockout are node interventions
-              expressible as do(·) on observed variables; the rest act on the mechanism.
-              Bayesian inference is run per class and scored on structure recovery,
-              parameter recovery and held-out prediction, and the failure signatures are
-              then looked for in public Perturb-seq data.
+              The first part asks which kinds of intervention can reveal regulatory
+              mechanism at all. I simulate published gene regulatory networks with ordinary
+              differential equations and realistic count noise, so that the true mechanism
+              is known, and ask which intervention protocols let competing mechanisms be
+              told apart, and whether the ambiguity that remains would change a prediction
+              or an intervention decision. The current test compares ordinary gene
+              knockdowns and knockouts with calibrated additions of production whose
+              strength depends on the cell&rsquo;s state, similar to what an enhancer-driven
+              transcription-factor construct delivers.
             </p>
 
             <p>
-              The second phase moves from node-level to calibrated mechanism-level
-              intervention measured in cells, where what is delivered is a function of
-              cell state rather than the identity of a gene — the first step toward
-              deriving an intervention rather than selecting one from a screen.
+              The second part moves to real cells. Using perturbation data from
+              differentiating stem cells, I will learn a causal model of regulatory state
+              and test it where it matters for control: predicting interventions it has not
+              seen, and choosing interventions that reach a target cell state.
             </p>
 
             <span class="venue">
               <b>Research project</b> 09/2026–02/2027, remote ·
-              <b>thesis</b> 02–08/2027, full time at EMBL-EBI
+              <b>thesis</b> 02–08/2027, full time on site
+            </span>
+          </div>
+        </article>
+
+
+        <article class="layer">
+          <div class="idx">2025–</div>
+          <div>
+            <p class="tag">Biological networks · infrastructure</p>
+
+            <h3>
+              <a href="https://saezlab.github.io/annnet/">AnnNet</a> and SysBioVerse
+            </h3>
+
+            <p class="where">
+              EMBL-EBI, Saez Lab, with Open Targets · lead developer
+            </p>
+
+            <p>
+              AnnNet is AnnData for biological networks. One annotated container holds
+              directed, signed, hyperedge, multilayer and condition-specific structure, with
+              lossless storage and interoperability with NetworkX, igraph, graph-tool and
+              PyTorch Geometric. A plain directed graph is only one special case, which
+              matters because biological interactions often change with context, and a
+              single graph throws that context away. I designed and built the core: the
+              incidence representation, the annotation model, the storage format and the
+              library interfaces. Groups at EMBL-EBI and Imperial College London use it, and
+              it is developed with scverse core developers so that it fits the single-cell
+              Python ecosystem.
+            </p>
+
+            <p>
+              It is now growing into <b>SysBioVerse</b> (2026–), a network-biology
+              consortium with scverse: one interface for regulatory, signalling, metabolic,
+              cell–cell and multi-omic causal inference, so that methods which model
+              biological structure differently can be compared and combined instead of being
+              reimplemented for each paper.
+            </p>
+
+            <span class="venue">
+              <b>Lead developer</b> · co-first author, preprint forthcoming
+            </span>
+          </div>
+        </article>
+
+
+        <article class="layer">
+          <div class="idx">2024–</div>
+          <div>
+            <p class="tag">Experimental systems biology · interaction networks</p>
+
+            <h3>Multiplex bacterial interaction networks</h3>
+
+            <p class="where">
+              Université Euromed de Fès
+            </p>
+
+            <p>
+              A trait-resolved interaction study across 60 soil bacterial strains, which I
+              designed and ran: pairwise assays producing 12 directed interaction layers,
+              analysed as one multilayer network rather than a single graph. The analysis
+              places the strains in a low-dimensional space of antagonistic, metabolic and
+              morphogenetic strategies, and shows that the sign and strength of an
+              interaction depend on context rather than being fixed for a pair of strains.
+              That result is where AnnNet started: a single directed graph cannot represent
+              a system whose edges change meaning with conditions.
+            </p>
+
+            <span class="venue">
+              <b>First author</b> ·
+              <a href="https://www.biorxiv.org/content/10.64898/2026.09.16.752070v1">bioRxiv preprint</a>
+              · under review, ISME&nbsp;Communications
             </span>
           </div>
         </article>
@@ -643,20 +711,19 @@
             </p>
 
             <p>
-              Whether the interpretability “features” read out of a genomic foundation
-              model can be trusted, tested against per-base-pair causal ground truth from
-              saturation-mutagenesis MPRA. Run as the field would run it, the test returns
-              a discovery, and it passes every control such a claim is normally asked for:
-              label shuffling, repeat masking, a likelihood baseline, three seeds, two
-              autoencoder families, two architectures. The discovery is an artifact. The
-              procedure thresholds one tail of a null and never asks whether the excess is
-              one-sided — it is not, the same multiple-testing procedure on the opposite
-              tail returns more discoveries, the two distributions differ in width rather
-              than location, and the effect grows with dictionary size. What the threshold
-              selects is units whose score is noisier than a dense random direction’s,
-              which sparser units mechanically are. Replication across seeds and
-              architectures is evidence against implementation error, not against a
-              misspecified null — which is why the whole control suite could not see it.
+              Do the &ldquo;features&rdquo; that sparse autoencoders find in a genomic
+              foundation model correspond to regulatory mechanism? I tested this against
+              per-base causal ground truth from saturation-mutagenesis massively parallel
+              reporter assays. Run the standard way, the test reports a discovery that
+              survives every control such claims usually get: label shuffling, repeat
+              masking, a likelihood baseline, three seeds, two autoencoder families and two
+              architectures. The discovery is an artifact. The test thresholds one tail of a
+              null distribution, and the same false-discovery-rate procedure applied to the
+              other tail finds even more &ldquo;discoveries&rdquo;. The two distributions
+              differ in spread, not in location, and the effect grows with dictionary size,
+              because sparser units simply have noisier scores. Replicating across seeds
+              and architectures rules out a coding error, not a wrong null, which is why the
+              usual controls could not catch it.
             </p>
 
             <span class="venue">
@@ -668,106 +735,31 @@
 
 
         <article class="layer">
-          <div class="idx">2025–</div>
-          <div>
-            <p class="tag">Biological networks · structured representations</p>
-
-            <h3>
-              <a href="https://saezlab.github.io/annnet/">AnnNet</a>
-            </h3>
-
-            <p class="where">
-              EMBL-EBI, Saez Lab, with Open Targets · lead developer
-            </p>
-
-            <p>
-              AnnData for systems biology. One annotated container holds directed, signed,
-              hyperedge, multilayer and condition-specific structure on a single sparse
-              incidence core, with typed annotation tables, lossless native storage and lazy
-              interoperability with NetworkX, igraph, graph-tool and PyTorch Geometric. The
-              classical directed graph is a special case rather than the frame — which
-              matters, because forcing biological structure into it discards exactly the
-              conditioning that makes a network claim causal. I designed and built the core:
-              the incidence representation, the annotation model, the storage format and the
-              library interfaces. It is used by groups at EMBL-EBI and Imperial College
-              London, and developed in close contact with scverse core developers and
-              collaborators, so that it composes with the single-cell stack rather than
-              competing with it.
-            </p>
-
-            <p>
-              <b>SysBioVerse</b> (2026–, Open Targets) is the layer on top: the methods, and
-              the connectors to the prior-knowledge ecosystem, that make AnnNet
-              biology-aware. Regulatory, signalling, metabolic, cell–cell and multi-omic
-              causal inference behind one interface, so that methods which disagree about
-              what a causal biological structure even is can still be compared, benchmarked
-              and composed — rather than reimplemented per paper against incompatible data
-              structures.
-            </p>
-
-            <span class="venue">
-              <b>Lead developer</b> · co-first author, in preparation · target: Bioinformatics
-            </span>
-          </div>
-        </article>
-
-
-        <article class="layer">
           <div class="idx">2025</div>
           <div>
             <p class="tag">Cellular state · representation learning</p>
 
-            <h3>SampleCLR — patient-level representations from single-cell data</h3>
+            <h3>SampleCLR: patient-level representations from single-cell data</h3>
 
             <p class="where">
               Helmholtz Munich, Lücken Lab · research collaborator
             </p>
 
             <p>
-              An architecture combining contrastive learning and multi-head attention to
-              learn patient-level embeddings from single-cell transcriptomics, reaching
+              A model combining contrastive learning and multi-head attention that learns
+              patient-level embeddings from single-cell transcriptomics; the paper reports
               state-of-the-art results on disease-stratification benchmarks. I contributed
-              interpretability and transfer-learning analyses, and to the architecture
-              design. Whether a representation transfers across biological systems rather
-              than fitting its benchmark is the question my later work formalises.
+              the interpretability and transfer-learning analyses and parts of the
+              architecture design, including tests of whether the representations transfer
+              across biological systems rather than only fitting the benchmark.
             </p>
 
             <span class="venue">
               <b>Preprint</b> ·
               <a href="https://openreview.net/pdf?id=0eenZ5FvH1">
-                “Great patients embed alike: contrastive learning for sample
-                representation from single-cell data”
+                &ldquo;Great patients embed alike: contrastive learning for sample
+                representation from single-cell data&rdquo;
               </a>
-            </span>
-          </div>
-        </article>
-
-
-        <article class="layer">
-          <div class="idx">2024–</div>
-          <div>
-            <p class="tag">Experimental systems biology · interaction structure</p>
-
-            <h3>Multiplex bacterial interaction networks</h3>
-
-            <p class="where">
-              Université Euromed de Fès
-            </p>
-
-            <p>
-              A trait-resolved interaction study across 60 soil bacterial strains,
-              generating 12 directed interaction layers from large-scale pairwise assays —
-              an interaction tensor rather than a single network. A multilayer analysis of
-              that tensor yields a low-dimensional ecological embedding classifying
-              microbial strategies across antagonistic, metabolic and morphogenetic modes,
-              and shows that interaction sign and strength are context-dependent rather
-              than intrinsic to a strain pair. This is where the limitation motivating
-              AnnNet came from: a single directed graph cannot represent a system whose
-              edges change meaning with condition.
-            </p>
-
-            <span class="venue">
-              <b>First author</b> · in preparation · target: ISME&nbsp;J
             </span>
           </div>
         </article>
@@ -784,8 +776,8 @@
         <h2>Ongoing direction</h2>
 
         <p class="section-note">
-          An open line of work rather than a finished project — where the results above
-          have pushed me, and what I am trying to settle next.
+          Where the results above have pushed me, stated as hypotheses I am testing
+          rather than conclusions.
         </p>
       </div>
 
@@ -794,50 +786,28 @@
 
         <div>
           <h3>
-            Regulation in the wrong coordinates
+            Regulation in the wrong coordinates?
           </h3>
 
           <p>
-            The question I keep returning to is not what regulates what, but in which
-            coordinates that question is well-posed. The gene is a measurement channel
-            biology handed us, not necessarily a causal joint of the system: several
-            distinct maps get conflated under the word, and only one of them — from an
-            intervention at a locus to a displacement of cell state — is genuinely
-            many-to-many. Genes remain perfectly real objects. They may simply be the wrong
-            basis for the causal claim.
+            Perturbation experiments are usually read gene by gene: knock one gene down and
+            see what else moves. I suspect genes are often the wrong units for the causal
+            claim. They are real, and they are what we measure, but the effect of an
+            intervention on cell state can be spread across many genes at once. If so,
+            regulation may be better described in other units, such as programmes or
+            regulatory activities, and part of my thesis tests which units actually predict
+            the effects of new interventions.
           </p>
 
           <p>
-            Two long-standing puzzles collapse into one if that is right. Pleiotropy is one
-            gene touching many things; polygenicity is one thing touched by many genes.
-            These need not be two mechanisms requiring two explanations — they can be the
-            same distributed structure read along its rows or along its columns, and
-            missing heritability then looks less like absent information than like variance
-            that appears scattered because the causal units are not gene-shaped. The
-            general reflex: when a field has a stubborn residual, suspect the coordinate
-            system before going looking for more variance.
-          </p>
-
-          <p>
-            What the data has forced so far goes a step further than I expected, and cuts
-            against my own starting position. A learned feature basis is also just a chart.
-            There is no inventory of latent features waiting to be found — resolution is a
-            knob rather than a discovery, and the reported number of them tracks the
-            dictionary you chose rather than anything about the system. Three times now, on
-            different statistics, a quantity that looked directly measurable turned out to
-            be manufactured by the act of measuring it: once by a threshold, once by a
-            baseline, once by a preprocessing seed. That is not three bugs; it is a
-            constraint on latent-variable accounts of regulation in general.
-          </p>
-
-          <p>
-            So the direction is not gene basis to feature basis. It is toward the objects
-            that are measured rather than inferred: how a system fluctuates on its own, and
-            how it moves when it is pushed. Regulation is the operator between them, and
-            the interesting biology is where the relation between fluctuation and response
-            breaks down. What I want to know is whether that breakage is structured, and
-            what invariant is left to hunt when the rank of the problem turns out not to
-            exist.
+            My own results make me cautious about the obvious alternative. Features learned
+            by a model are coordinates too, and in my audits their apparent number and
+            meaning shifted with analysis choices: once with a threshold, once with a
+            baseline, once with a preprocessing seed. So I am moving toward quantities that
+            are measured rather than inferred: how a system fluctuates on its own, and how it
+            responds when pushed. Where those two disagree is where I expect the most
+            informative biology, and it is the kind of evidence a model needs before it can
+            be trusted to choose an intervention.
           </p>
 
           <span class="venue">
@@ -918,9 +888,8 @@
               </dt>
 
               <dd>
-                High-dimensional and sparse inference, Bayesian and simulation-based
-                inference (MCMC, SMC-ABC), spectral methods, stochastic dynamics and
-                linear-response theory, subspace and canonical-correlation methods
+                ODE models of gene regulation, Bayesian model fitting, high-dimensional
+                and sparse inference
               </dd>
             </div>
 
@@ -931,11 +900,9 @@
               </dt>
 
               <dd>
-                Interventional ground truth, null calibration and misspecification
-                diagnostics, permutation and subsampling inference, multiple testing,
-                nested and group-structured cross-validation, leakage diagnosis,
-                floor/ceiling calibration, planted nulls, pre-registration and replication
-                design
+                Interventional ground truth, null calibration, permutation inference,
+                multiple testing, group-structured cross-validation, leakage diagnosis,
+                noise ceilings, planted nulls
               </dd>
             </div>
 
@@ -947,8 +914,8 @@
 
               <dd>
                 Gene regulatory networks, perturbational genomics, single-cell
-                transcriptomics, variant-effect prediction, saturation genome editing,
-                massively parallel reporter assays, statistical genetics
+                transcriptomics, massively parallel reporter assay data, statistical
+                genetics
               </dd>
             </div>
 
@@ -959,9 +926,8 @@
               </dt>
 
               <dd>
-                Mechanistic modelling, ODE simulation of gene regulatory networks,
-                dynamical systems, multilayer and hypergraph formalisms, prior-knowledge
-                integration, graph neural networks
+                Mechanistic and dynamical modelling, multilayer and hypergraph
+                formalisms, prior-knowledge integration
               </dd>
             </div>
 
@@ -972,8 +938,8 @@
               </dt>
 
               <dd>
-                ESM2, ESM-C, Nucleotide Transformer, HyenaDNA, Caduceus, Evo — embedding
-                extraction, frozen-encoder pipelines, probing, evaluation-task design
+                Genomic and protein language models: embedding extraction, probing,
+                evaluation design
               </dd>
             </div>
 
@@ -984,9 +950,8 @@
               </dt>
 
               <dd>
-                Python (PyTorch, NumPy, scikit-learn), C/C++, R, Bash, Docker, GCP ·
-                scientific library and API design, open-source maintenance,
-                memory-constrained and cached array pipelines
+                Python (PyTorch, NumPy, scikit-learn), Bash, Docker, GCP · scientific
+                library and API design, open-source maintenance
               </dd>
             </div>
 
