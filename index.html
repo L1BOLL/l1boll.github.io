@@ -4,8 +4,8 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Youssef Naciri Zerta — Control of cell state</title>
-<meta name="description" content="Youssef Naciri Zerta — deriving interventions that move a cell from one state to a target state: identifiability of perturbation experiments, causal representation learning, gene regulation." />
+<title>Youssef Naciri Zerta — Predictive control of cellular function</title>
+<meta name="description" content="Youssef Naciri Zerta — research on decision-relevant perturbation experiments, causal representations of gene regulation, and the predictive control of cellular function." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -349,6 +349,12 @@
     color:var(--muted);
   }
 
+  .next + .next{
+    border-top:1px solid var(--line);
+    padding-top:26px;
+    margin-top:26px;
+  }
+
   /* ---- background ---- */
 
   .grid2{
@@ -530,7 +536,7 @@
 
     <div class="wrap">
       <p class="eyebrow reveal">
-        Cell state · intervention · control
+        Causal perturbations · cell state · control
       </p>
 
       <h1 class="name reveal">
@@ -538,22 +544,23 @@
       </h1>
 
       <p class="vision reveal">
-        Given a cell in one state and a target state, I want an intervention that moves it
-        there to be <em>derived</em>, not found by screening. Everything below is what
-        stands in the way of that.
+        Can we <em>predictably control</em> what a cell does? I want to understand
+        what must be learned from perturbations to design interventions that produce
+        a specified cellular function.
       </p>
 
       <p class="avail reveal">
-        Designing an intervention needs a model that predicts what untried interventions will
-        do, and evidence strong enough to trust it. I work on both: which experiments can
-        identify regulatory mechanism, how to represent biological networks whose
-        interactions change with context, and how to check whether a learned representation
-        means what it appears to. I trained as a wet-lab biotechnology engineer; my tools are
-        now mostly causal inference, dynamical modelling and perturbation genomics.
+        My current work asks which experiments distinguish regulatory mechanisms that
+        matter for intervention choice, whether representations of cellular state predict
+        unseen perturbations, and how to evaluate such predictions against experimental
+        evidence. I started in wet-lab biotechnology; my research now combines causal
+        inference, dynamical modelling, single-cell data and scientific software.
+        Longer term, I am interested in both redirecting endogenous regulation and
+        programming new cellular responses.
       </p>
 
       <p class="eyebrow avail reveal">
-        Fes (Morocco) until February 2027 . Cambridge (UK) February–August 2027 
+        Fès, Morocco · until February 2027 &nbsp;·&nbsp; Cambridge, UK · February–August 2027
       </p>
 
       <nav class="links reveal" aria-label="Profiles">
@@ -580,8 +587,8 @@
       <div class="section-head">
         <h2>Selected research</h2>
         <p class="section-note">
-          My thesis, the network infrastructure it depends on, the wet-lab work it grew
-          out of, and two audits of learned representations.
+          From experimental interactions and computational representations to the
+          question of which interventions can reliably change cell state.
         </p>
       </div>
 
@@ -592,7 +599,7 @@
           <div>
             <p class="tag">Thesis · perturbation biology · cell-state control</p>
 
-            <h3>Can the interventions we perform identify the mechanism we claim?</h3>
+            <h3>Which perturbations identify mechanisms that matter for control?</h3>
 
             <p class="where">
               EMBL-EBI, Saez Lab, with the Wellcome Sanger Institute ·
@@ -600,22 +607,21 @@
             </p>
 
             <p>
-              The first part asks which kinds of intervention can reveal regulatory
-              mechanism at all. I simulate published gene regulatory networks with ordinary
-              differential equations and realistic count noise, so that the true mechanism
-              is known, and ask which intervention protocols let competing mechanisms be
-              told apart, and whether the ambiguity that remains would change a prediction
-              or an intervention decision. The current test compares ordinary gene
-              knockdowns and knockouts with calibrated additions of production whose
-              strength depends on the cell&rsquo;s state, similar to what an enhancer-driven
-              transcription-factor construct delivers.
+              I simulate published gene-regulatory networks with ordinary differential
+              equations and realistic count noise, where the underlying mechanism is known.
+              I test which perturbation protocols distinguish competing mechanisms and,
+              more importantly, whether the remaining ambiguity changes a prediction or
+              the intervention one would choose. The current comparison includes knockdowns,
+              knockouts and calibrated, state-dependent increases in transcription-factor
+              production, analogous to enhancer-driven constructs.
             </p>
 
             <p>
-              The second part moves to real cells. Using perturbation data from
-              differentiating stem cells, I will learn a causal model of regulatory state
-              and test it where it matters for control: predicting interventions it has not
-              seen, and choosing interventions that reach a target cell state.
+              The next part moves to perturbation data from differentiating stem cells.
+              I plan to learn causal representations of regulatory state, evaluate predictions
+              for interventions held out from training, and investigate the selection of
+              interventions toward a target cell state. This work is ongoing; prospective
+              functional control remains the goal, not a result already established.
             </p>
 
             <span class="venue">
@@ -668,7 +674,7 @@
 
 
         <article class="layer">
-          <div class="idx">2024–</div>
+          <div class="idx">2024–2026</div>
           <div>
             <p class="tag">Experimental systems biology · interaction networks</p>
 
@@ -768,50 +774,58 @@
   </section>
 
 
-  <section class="section">
+  <section class="section" id="questions">
     <div class="wrap">
 
       <div class="section-head">
-        <h2>Ongoing direction</h2>
-
+        <h2>Research questions</h2>
         <p class="section-note">
-          Where the results above have pushed me, stated as hypotheses I am testing
-          rather than conclusions.
+          These are the problems I want to investigate, not claims that I have solved them.
         </p>
       </div>
 
       <div class="next">
-        <div class="arrow">→</div>
-
+        <div class="arrow">01 /</div>
         <div>
-          <h3>
-            Regulation in the wrong coordinates?
-          </h3>
-
+          <h3>Which uncertainty matters for intervention?</h3>
           <p>
-            Perturbation experiments are usually read gene by gene: knock one gene down and
-            see what else moves. I suspect genes are often the wrong units for the causal
-            claim. They are real, and they are what we measure, but the effect of an
-            intervention on cell state can be spread across many genes at once. If so,
-            regulation may be better described in other units, such as programmes or
-            regulatory activities, and part of my thesis tests which units actually predict
-            the effects of new interventions.
+            Several mechanisms may explain the same observations. But we do not always need
+            to identify every interaction: we need to resolve the differences that would
+            change an intervention decision. Which experiments are most informative for that
+            decision, rather than merely for reconstructing a network?
           </p>
+          <span class="venue">Experimental design · causal identifiability · perturbation response</span>
+        </div>
+      </div>
 
+      <div class="next">
+        <div class="arrow">02 /</div>
+        <div>
+          <h3>What description of cell state survives an unseen perturbation?</h3>
           <p>
-            My own results make me cautious about the obvious alternative. Features learned
-            by a model are coordinates too, and in my audits their apparent number and
-            meaning shifted with analysis choices: once with a threshold, once with a
-            baseline, once with a preprocessing seed. So I am moving toward quantities that
-            are measured rather than inferred: how a system fluctuates on its own, and how it
-            responds when pushed. Where those two disagree is where I expect the most
-            informative biology, and it is the kind of evidence a model needs before it can
-            be trusted to choose an intervention.
+            Genes are measurable, but intervention effects may be coordinated across genes
+            and change over time. Regulatory activities, programmes and dynamical responses
+            might be more useful for prediction. Learned latent features are not exempt from
+            scrutiny: my work on model interpretation showed how convincing features can
+            arise from evaluation artifacts. I want representations that earn their meaning
+            by predicting experimental responses.
           </p>
+          <span class="venue">Causal representation learning · dynamics · out-of-distribution evaluation</span>
+        </div>
+      </div>
 
-          <span class="venue">
-            Cell-state coordinates · perturbational genomics · causal representation learning
-          </span>
+      <div class="next">
+        <div class="arrow">03 /</div>
+        <div>
+          <h3>Can we design a change in cellular function, not just in expression?</h3>
+          <p>
+            A desired transcriptional signature is not sufficient evidence of a functional
+            or stable cell state. The longer-term test is to select interventions in advance,
+            measure what the cells actually do, and understand failures across contexts.
+            I am interested in both manipulating endogenous regulation and designing
+            synthetic regulatory systems when existing control mechanisms are insufficient.
+          </p>
+          <span class="venue">Cell-state engineering · prospective validation · synthetic regulation</span>
         </div>
       </div>
 
